@@ -1,5 +1,5 @@
-require 'shared_image_spec'
-require_relative '../proxy_demo.rb'
+require_relative './shared_image_spec'
+require_relative '../../virtual_proxy_demo.rb'
 
 describe Image do
   it_behaves_like "a browser item"

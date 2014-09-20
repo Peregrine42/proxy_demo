@@ -38,7 +38,7 @@ class ImageProxy
   end
 
   def method_missing name, *args
-    @subject.call(name, *args)
+    subject.send(name, *args)
   end
 end
 
