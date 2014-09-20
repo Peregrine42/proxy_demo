@@ -23,7 +23,8 @@ end
 
 class ImageProxy
 
-  def initialize path
+  def initialize path, &creation_block
+    @creation_block = creation_block
     @path = path
   end
 
@@ -32,7 +33,11 @@ class ImageProxy
   end
 
   def show
-    Image.new(@path).show
+    subject.show
+  end
+
+  def subject
+    @subject || (@subject = @creation_block.call)
   end
 
   def filename
