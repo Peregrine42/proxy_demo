@@ -1,14 +1,11 @@
 class Image
 
+  attr_accessor :path
+
   def initialize path
     @data = retrieve_image(path)
     @path = path
   end
-
-  def path
-    @path
-  end
-
 
   def retrieve_image path
     sleep 5
@@ -40,10 +37,9 @@ class ImageProxy
     @subject || (@subject = @creation_block.call)
   end
 
-  def filename
-    @path.split('/')[-1]
+  def method_missing name, *args
+    @subject.call(name, *args)
   end
-
 end
 
 class Client
